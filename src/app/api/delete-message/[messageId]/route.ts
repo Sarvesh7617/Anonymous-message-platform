@@ -7,10 +7,10 @@ import { User } from "@/model/user.model";
 
 
 
-interface MessageIdProps{
-    params:{
-        messageId:string
-    }
+interface MessageIdProps {
+    params: Promise<{
+        messageId: string;
+    }>;
 }
 
 

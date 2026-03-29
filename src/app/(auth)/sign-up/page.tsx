@@ -21,6 +21,8 @@ import { FcGoogle } from "react-icons/fc";
 import {Loader2} from "lucide-react";
 import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
+import Image from "next/image";
+import Logo from "@/../public/logo.webp";
 
 
 
@@ -102,9 +104,7 @@ const SignUP=()=>{
         <div className="flex items-center justify-center w-full dark:bg-black min-h-screen">
             <div className="w-full max-w-md dark:bg-gray-600 bg-gray-300 rounded-xl p-5 border-black/10 m-8 relative z-50 dark:text-white">
                 <div className="flex justify-center">
-                    <span>
-                        {/* <Logo/> */}LOGO
-                    </span>
+                    <Image src={Logo} width={60} className="rounded-md" alt="logo"/>
                 </div>
                 <h2 className="text-center font-bold text-2xl leading-tight">Sign up to create account</h2>
                 <p className="text-center text-md p-2 leading-tight">

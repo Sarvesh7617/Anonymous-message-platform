@@ -17,12 +17,11 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import { useParams } from "next/navigation";
+import { Skeleton } from "@/components/ui/skeleton";
 
 type paramsProps={
         username:string
 }
-
-
 
 
 const SendMessage=()=>{
@@ -32,14 +31,12 @@ const SendMessage=()=>{
 
     const initialMessageString ="What's your favorite movie?||Do you have any pets?||What's your dream job?";
 
-    // const {complete,completion,error,isLoading:isSuggestLoading}=useCompletion({
-    //     api:"/api/suggest-message",
-    //     initialCompletion:initialMessageString
-    // });
-    const [completion, setCompletion] = useState(initialMessageString);
-const [isSuggestLoading, setIsSuggestLoading] = useState(false);
-const error = null;
- console.log("completion in render:", completion); 
+    const { complete, completion, isLoading:isSuggestLoading, error } = useCompletion({
+        api: "/api/suggest-message",
+        initialCompletion: initialMessageString,
+        streamProtocol:"text"
+    }); 
+
     const form=useForm<z.infer<typeof MessageSchema>>({
         resolver:zodResolver(MessageSchema)
     })
@@ -75,22 +72,19 @@ const error = null;
 
 
     const fetchMessage = async () => {
-  console.log("Suggest Message button clicked");
-
-//   try {
-//     const response = await axios.post("/api/suggest-message");
-//     const cleanedMessage = response.data.message.replace(/^"|"$/g, '');
-//     console.log(cleanedMessage);
-//     complete(cleanedMessage);
-//   } catch (err) {
-//     console.log("Error fetching messages:", err);
-//   }
-const dummy =
-    "What's your favorite hobby?||If you could travel anywhere, where would you go?||What makes you smile instantly?";
-
-  setCompletion(dummy);
-
-};
+        try {
+            complete("generate"); 
+        } 
+        catch (error) {
+            console.log("Error fetching messages:", error);
+            const err=error instanceof Error?error.message : String(error)
+            toast.error("Fetching error",{
+                description:err,
+                position:"top-center",
+                className:"!bg-red-500 !text-black !font-bold !text-lg flex items-center justify-start"
+            })
+        }
+    };
 
     const handleMessageClick=(message:string)=>{
         form.setValue('content',message)
@@ -156,15 +150,20 @@ const dummy =
                     <CardHeader className="text-xl font-semibold">Messages</CardHeader>
                     <CardContent className="flex flex-col gap-y-4">
                         {error?(
-                            // <p className="text-red-500">{error.message}</p>
-                            <p>errro</p>
+                            <p className="text-red-500">{error.message}</p>
+                        ):isSuggestLoading?(
+                            <div className="flex w-full flex-col gap-2">
+                                <Skeleton className="h-4 w-full bg-gray-500"/>
+                                <Skeleton className="h-4 w-full bg-gray-500"/>
+                                <Skeleton className="h-4 w-full bg-gray-500"/>
+                            </div>
                         ):(
                             parseStringMessages(completion).map((mess,idx)=>(
                                 <Button
                                     key={idx}
                                     variant={"outline"}
                                     onClick={()=>handleMessageClick(mess)}
-                                    className="mb-2 hover:cursor-pointer"
+                                    className="mb-2 hover:cursor-pointer whitespace-normal break-words py-6"
                                 >
                                     {mess}
                                 </Button>

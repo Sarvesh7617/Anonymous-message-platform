@@ -4,6 +4,7 @@ import MessageCard from "@/components/MessageCard";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Switch } from "@/components/ui/switch";
 import { messageProps } from "@/model/message.model";
 import { AcceptMessageSchema } from "@/schema/acceptmessageSchema";
@@ -180,19 +181,26 @@ const Dashboard=()=>{
                 )}
             </Button>
 
-            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
-                {messages.length>0?(
-                    messages.map((m,idx)=>(
-                        <MessageCard
-                            key={idx}
-                            message={m}
-                            onDelete={handleDeleteMessage}
-                        />
-                    ))
-                ):(
-                    <p className="text-center text-xl py-10 text-red-500">No message to display</p>
-                )}
+            {isloading ? (
+            <div className="h-20 p-4 md:mb-11 mb-0 border rounded-md shadow m-auto max-w-md ">
+                <Skeleton className="h-6 w-3/4 mb-2 bg-gray-500" />
+                <Skeleton className="h-4 w-full mb-2 bg-gray-500" />
             </div>
+            ) : messages.length > 0 ? (
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+                {messages.map((m, idx) => (
+                <MessageCard
+                    key={idx}
+                    message={m}
+                    onDelete={handleDeleteMessage}
+                />
+                ))}
+            </div>
+            ) : (
+            <p className="text-center text-xl py-10 text-red-500">
+                No message to display
+            </p>
+            )}
         </div>
     )
 }

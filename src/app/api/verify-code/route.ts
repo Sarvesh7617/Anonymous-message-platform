@@ -27,7 +27,7 @@ const POST=async(req:NextRequest)=>{
             )
         
         const codeCorrect=user.verifyCode==code;
-        const codeNotExpire=new Date(user.verifyCodeExpiry)>new Date();
+        const codeNotExpire=user.verifyCodeExpiry?new Date(user.verifyCodeExpiry)>new Date():false;
 
         if(codeCorrect && codeNotExpire)
         {

@@ -1,12 +1,5 @@
 import { DB_name } from "../Constant";
 import mongoose from "mongoose";
-import dns from 'node:dns/promises';
-dns.setServers(['1.1.1.1', '8.8.8.8']);
-
-import dnsNative from 'dns';
-dnsNative.setDefaultResultOrder('ipv4first');
-
-
 
 let cached=global.mongoose
 

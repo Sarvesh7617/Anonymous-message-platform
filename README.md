@@ -251,3 +251,14 @@ src/
 - 📱 Enhanced mobile UX
 - 📬 Email notifications for new messages
 - 🧠 Better AI personalization
+
+
+---
+
+
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+You are free to use, modify, and distribute this software with proper attribution.
+
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)

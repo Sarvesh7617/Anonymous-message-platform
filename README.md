@@ -104,7 +104,7 @@ npm install
 
 ```bash
 # MongoDB connection string
-MONGOOSE_URL="MONGOOSE_URL="mongodb+srv://<user>:<pass>@<cluster>.mongodb.net"
+MONGOOSE_URL="mongodb+srv://<user>:<pass>@<cluster>.mongodb.net"
 
 # Resend email API key
 RESEND_API_KEY=" "

@@ -1,6 +1,6 @@
 # 🚀 Anonymous Message Platform
 
-A full-stack anonymous messaging web application built with Next.js, where users can receive anonymous messages, verify their identity, and manage messages securely with a modern UI.
+A full-stack anonymous messaging web application built with Next.js, where users can receive messages anonymously, verify their identity via email, and manage messages securely through a modern dashboard.
 
 ---
 ## 📸 Screenshots
@@ -21,15 +21,16 @@ A full-stack anonymous messaging web application built with Next.js, where users
 
 ## ✨ Features
 
-- 🔐 Secure Authentication (NextAuth)
-- 📩 Receive Anonymous Messages
-- 📧 Email Verification System (OTP/Code-based)
+- 🔐 Authentication using NextAuth
+- 📩 Send & Receive Anonymous Messages
+- 📧 Email Verification (OTP/Code-based)
 - 🧾 Schema Validation using Zod
 - 📝 Form Handling with React Hook Form
-- 🤖 AI-powered Message Suggestions (OpenRouter)
+- 🤖 AI-powered Message Suggestions
 - 🗑️ Delete Messages
+- 🎯 Accept/Reject Messages Toggle
 - 🔔 Toast Notifications (Sonner)
-- ⚡ Modern UI with shadcn/ui + Radix UI
+- ⚡ Modern UI using shadcn/ui
 
 ---
 
@@ -37,8 +38,7 @@ A full-stack anonymous messaging web application built with Next.js, where users
 
 ### 🚀 Frontend
 - Next.js (App Router)
-- React 19
-- TypeScript
+- React + TypeScript
 - Tailwind CSS
 - shadcn/ui (Radix UI)
 - next-themes
@@ -50,17 +50,15 @@ A full-stack anonymous messaging web application built with Next.js, where users
 - NextAuth.js
 
 ### 🗄️ Database
-- MongoDB
-- Mongoose
+- MongoDB (Database)
+- Mongoose (ODM)
 
 ### 📦 Validation & Forms
 - Zod
 - React Hook Form
-- @hookform/resolvers
 
 ### 🤖 AI Integration
-- OpenRouter SDK
-- AI SDK (@ai-sdk/react)
+- OpenRouter API
 
 ### 📧 Email Services
 - Resend
@@ -71,6 +69,12 @@ A full-stack anonymous messaging web application built with Next.js, where users
 - Axios (API calls)
 - Day.js (date handling)
 - clsx & tailwind-merge (class management)
+
+### 🔒 Utilities
+- bcryptjs
+- Axios
+- Day.js
+- clsx + tailwind-merge
 
 ---
 
@@ -100,7 +104,7 @@ npm install
 
 ```bash
 # MongoDB connection string
-MONGOOSE_URL="mongodb+srv://your_email:your_password@cluster0.875cujb.mongodb.net"
+MONGOOSE_URL="MONGOOSE_URL="mongodb+srv://<user>:<pass>@<cluster>.mongodb.net"
 
 # Resend email API key
 RESEND_API_KEY=" "
@@ -140,10 +144,8 @@ npm run dev
 ```bash
 email/
 │ └── verificationEmail.tsx        # Email template for OTP/verification
-
 public/
 │ └── logo.webp                   # Static asset (logo)
-
 src/
 ├── app/
 │    ├── (app)/
@@ -217,3 +219,35 @@ src/
 ├── messages.json                     # Default/homepage messages
 └── proxy                             # Proxy/config related setup
 ```
+---
+
+## 🔑 Core Functionalities
+
+### 📨 Anonymous Messaging
+
+- Users can receive messages without revealing sender identity.
+
+### 🔐 Authentication System
+- Signup / Login via NextAuth
+- Secure session management
+
+### 📧 Email Verification
+- OTP/Code sent via Resend
+- Verification before account activation
+- 🧾 Data Validation
+- Zod ensures type-safe validation on both frontend & backend
+- 🤖 AI Message Suggestions
+- Uses OpenRouter API to generate smart suggestions
+
+### 🎨 UI/UX
+- Built with shadcn/ui + Radix
+- Fully responsive & theme-enabled
+
+---
+
+## 📈 Future Improvements
+- 🔔 Real-time messaging (WebSockets)
+- 🛡️ Rate limiting & spam protection
+- 📱 Enhanced mobile UX
+- 📬 Email notifications for new messages
+- 🧠 Better AI personalization

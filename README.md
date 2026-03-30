@@ -94,12 +94,9 @@ cd navigate_to_dir
 npm install
 ```
 
+### 4. ⚙️ Environment Variables
 
----
-
-## ⚙️ Environment Variables
-
-#### Create a `.env` file:
+#### Create a .env file in the root of your project:
 
 ```bash
 # MongoDB connection string
@@ -120,7 +117,6 @@ CLIENT_ID=""
 CLIENT_SECRET=""
 
 ```
-
 
 ### 5. Run development server
 

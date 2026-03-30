@@ -74,4 +74,150 @@ A full-stack anonymous messaging web application built with Next.js, where users
 
 ---
 
+## ⚙️ Installation & Setup
+
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/Sarvesh7617/Anonymous-message-platform.git
+```
+
+### 2. Navigate to project directory
+
+```bash
+cd navigate_to_dir
+```
+
+### 3. Install dependencies
+```bash
+npm install
+```
+
+
+---
+
+## ⚙️ Environment Variables
+
+#### Create a `.env` file:
+
+```bash
+# MongoDB connection string
+MONGOOSE_URL="mongodb+srv://your_email:your_password@cluster0.875cujb.mongodb.net"
+
+# Resend email API key
+RESEND_API_KEY=" "
+
+# NextAuth secret for authentication
+NEXTAUTH_SECRET=""
+
+# OpenRouter API credentials
+OPENROUTER_API_KEY=""
+OPENROUTE_URL="https://openrouter.ai/api/v1"
+
+# Google OAuth credentials
+CLIENT_ID=""
+CLIENT_SECRET=""
+
+```
+
+
+### 5. Run development server
+
+```bash
+npm run dev
+```
+
+
+---
+
+
+## 🔗 Live Website
+
+👉 [Click here to visit project](https://anonymous-message-platform.vercel.app/)
+
+---
+
+
 ## 📂 Project Structure
+
+```bash
+email/
+│ └── verificationEmail.tsx        # Email template for OTP/verification
+
+public/
+│ └── logo.webp                   # Static asset (logo)
+
+src/
+├── app/
+│    ├── (app)/
+│    │   └── dashboard/
+│    │       ├── layout.tsx       # Dashboard shared layout
+│    │       └── page.tsx         # Dashboard main UI
+│    │
+│    ├── (auth)/
+│    │   ├── sign-in              # Login page
+│    │   ├── sign-up              # Register page
+│    │   └── verify/
+│    │        └── [username]/
+│    │              └── page.tsx  # OTP verification (dynamic route)
+│    │
+│    ├── api/
+│    │    ├── accept-message-status   # Toggle message accept/reject
+│    │    ├── auth/
+│    │    │    └── [...nextauth]/
+│    │    │         ├── option.ts     # NextAuth configuration
+│    │    │         └── route.ts      # NextAuth API handler
+│    │    ├── check-username-unique   # Check username availability
+│    │    ├── delete-message/
+│    │    │    └── [messageId]/
+│    │    │       └── route.ts        # Delete specific message
+│    │    ├── get-message             # Fetch user messages
+│    │    ├── send-message            # Send anonymous message
+│    │    ├── signUp                  # User registration API
+│    │    ├── suggest-message         # AI message suggestions
+│    │    └── verify-code             # Verify OTP/code
+│    │
+│    ├── u/
+│    │   └── [username]/
+│    │       └── page.tsx             # Public user message page
+│    │
+│    ├── favicon                      # App favicon
+│    ├── global.css                   # Global styles
+│    └── layout.tsx                   # Root layout
+│
+├── components/
+│    ├── ui/                          # shadcn UI components
+│    ├── MessageCard.tsx              # Message display card
+│    ├── Navbar.tsx                   # Navigation bar
+│    └── otp.tsx                      # OTP input component
+│
+├── lib/
+│   ├── dbconnect.ts                  # MongoDB connection setup
+│   ├── resend.ts                     # Resend email configuration
+│   └── utils.ts                      # Utility functions (shadcn helpers)
+│
+├── models/
+│   ├── user.ts                       # User schema/model
+│   └── message.ts                    # Message schema/model
+│
+├── schemas/
+│    ├── acceptmessageSchema.ts       # Validation for message toggle
+│    ├── messageSchema.ts             # Message validation schema
+│    ├── signinSchema.ts              # Sign-in validation
+│    ├── signupSchema.ts              # Sign-up validation
+│    └── verifycodeSchema.ts          # OTP verification validation
+│
+├── Types/
+│    ├── ApiResponse.ts               # API response types
+│    ├── dbTypes.ts                   # Database-related types
+│    └── next-auth.d.ts               # NextAuth type extensions
+│
+├── helper/
+│  └── sendVerificationEmail.tsx      # Function to send verification email
+│
+├── ClientProvider.tsx                # Global client-side providers (session/theme)
+├── Constant.ts                       # App constants (e.g., DB name)
+├── messages.json                     # Default/homepage messages
+└── proxy                             # Proxy/config related setup
+```

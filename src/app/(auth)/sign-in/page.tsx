@@ -55,7 +55,7 @@ const Login=()=>{
 
         else if(res.url=="http://localhost:3000/sign-in")
         {
-            toast.error("Login Successfully",{
+            toast.success("Login Successfully",{
                 description:res?.error,
                 position:"top-center",
                 className:"!bg-green-500 !text-black !font-bold !text-lg flex items-center justify-start"
